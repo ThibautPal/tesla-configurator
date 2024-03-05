@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Model } from '../../models/model.model';
+import { ModelsColors } from '../../models/modelsColors.model';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
 	providedIn: 'root'
 })
-export class ModelsService {
+export class ModelsColorsService {
 	constructor(private httpClient: HttpClient) { }
 
-	getModels(): Observable<Model[]> {
-		return this.httpClient.get<Model[]>('/models');
+	getModelsColors(): Observable<ModelsColors[]> {
+		return this.httpClient.get<ModelsColors[]>('/models');
 	}
 }

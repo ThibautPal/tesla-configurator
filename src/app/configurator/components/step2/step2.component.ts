@@ -1,25 +1,35 @@
 import { Component } from '@angular/core';
-import { StepperComponent } from '../stepper/stepper.component';
 import { Configuration } from '../../models/configuration.model';
 import { ConfigurationService } from '../../services/configuration/configuration.service';
 import { Subscription } from 'rxjs';
+import { OptionsService } from '../../services/options/options.service';
+import { Option } from '../../models/option.model';
+import { FormsModule } from '@angular/forms';
+import { Config } from '../../models/config.model';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
 	selector: 'app-step2',
 	standalone: true,
-	imports: [StepperComponent],
+	imports: [FormsModule, CurrencyPipe],
 	templateUrl: './step2.component.html',
 	styleUrl: './step2.component.scss'
 })
 export class Step2Component {
+
 	configuration: Configuration = {}
 	configurationSubscription: Subscription = Subscription.EMPTY;
 
+	option: Option = {}
+	optionsSubscription: Subscription = Subscription.EMPTY;
+
 	constructor(
-		private configurationService: ConfigurationService
+		private configurationService: ConfigurationService,
+		private optionsService: OptionsService
 	) { }
 
 	ngOnInit(): void {
+
 		this.configurationSubscription = this.configurationService.configurationSubject.subscribe(
 			(configuration: Configuration) => {
 				this.configuration = configuration
@@ -27,10 +37,22 @@ export class Step2Component {
 		);
 		this.configurationService.emitConfiguration()
 
-		console.log(this.configuration.model)
-		console.log(this.configuration.color)
+		this.optionsSubscription = this.optionsService.getOption(this.configuration?.model?.code).subscribe(option => {
+			this.option = option
+		})
+
 	}
 	ngOnDestroy(): void {
 		this.configurationSubscription.unsubscribe()
+	}
+
+	public compareConfig(object1: Config, object2: Config): boolean {
+		return object1 && object2
+			? object1.id === object2.id
+			: object1 === object2
+	}
+
+	getUrlImg(): string {
+		return "https://interstate21.com/tesla-app/images/" + this.configuration?.model?.code + "/" + this.configuration?.color?.code + ".jpg"
 	}
 }

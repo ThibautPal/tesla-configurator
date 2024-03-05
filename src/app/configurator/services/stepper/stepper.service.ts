@@ -8,15 +8,14 @@ import { Subject } from 'rxjs';
 export class StepperService {
 	private steps: Step[] = [];
 	stepsSubject = new Subject<Step[]>();
-	emitSteps() {
+	emitSteps(): void {
 		this.stepsSubject.next(this.steps)
 	}
-
-	newSteps() {
+	newSteps(): void {
 		this.steps = [
-			{ label: "Step 1", disabled: false, link: 'step1' },
-			{ label: "Step 2", disabled: true, link: 'step2' },
-			{ label: "Step 3", disabled: true, link: 'step3' }
+			{ label: "Step 1", link: 'step1' },
+			{ label: "Step 2", link: 'step2' },
+			{ label: "Step 3", link: 'step3' }
 		]
 		this.emitSteps()
 	}

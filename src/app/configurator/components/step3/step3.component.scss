@@ -1,0 +1,25 @@
+.priceLine {
+    display: flex;
+    padding-left: 20px;
+
+    p {
+        width: 50%;
+        height: 100%;
+        margin: 0;
+        line-height: 25px;
+    }
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.totalCostLine {
+    border-top: 1px solid white;
+    height: 50px;
+    margin-top: 10px 0 10px 0;
+
+    p {
+        line-height: 50px;
+    }
+}

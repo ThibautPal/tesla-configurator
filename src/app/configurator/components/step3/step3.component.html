@@ -1,1 +1,34 @@
-<app-stepper></app-stepper>
+<h2>Step 3: Summary</h2>
+<h3>Your Tesla {{configuration.model?.description}}</h3>
+
+<div class="priceLine">
+    <p class="bold">{{configuration.config?.description}}</p>
+    <p>{{configuration.config?.price | currency:'USD'}}</p>
+</div>
+<div class="priceLine">
+    <span>Range: {{configuration.config?.range}} miles - Max speed: {{configuration.config?.speed}}</span>
+</div>
+
+<div class="priceLine">
+    <p class="bold">{{configuration.color?.description}} Color</p>
+    <p>{{configuration.color?.price | currency:'USD'}}</p>
+</div>
+
+@if(configuration.towHitch){
+<div class="priceLine">
+    <p class="bold">Tow Hitch Package</p>
+    <p>{{ otherOptionsPrice | currency:'USD'}}</p>
+</div>
+}
+
+@if(configuration.yoke){
+<div class="priceLine">
+    <p class="bold">Yoke Steering Wheel</p>
+    <p>{{ otherOptionsPrice | currency:'USD'}}</p>
+</div>
+}
+
+<div class="priceLine totalCostLine">
+    <p class="bold">TOTAL COST</p>
+    <p>{{ getTotalCost() | currency:'USD'}}</p>
+</div>
