@@ -1,0 +1,5 @@
+<div id="stepper">
+    @for ( step of steps; track steps) {
+    <button id="{{step.link}}" [disabled]="step.disabled" (click)="navigateTo(step.link)">{{step.label}}</button>
+    }
+</div>

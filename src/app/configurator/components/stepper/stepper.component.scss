@@ -1,0 +1,9 @@
+#stepper {
+    display: flex;
+
+    button {
+        margin: 0;
+        float: left;
+        width: calc(100% / 3);
+    }
+}
