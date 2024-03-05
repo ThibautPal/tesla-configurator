@@ -45,7 +45,7 @@ export class Step1Component implements OnInit, OnDestroy {
 		this.configurationSubscription.unsubscribe()
 	}
 
-	getColorsConfig(): [Color] | undefined {
+	getColorsConfig(): Color[] | undefined {
 		return this.modelsColors.find(x => x.code === this.configuration?.model?.code)?.colors
 	}
 

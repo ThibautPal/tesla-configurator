@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 	providedIn: 'root'
 })
 export class StepperService {
-	private steps: Step[] = [];
+	steps: Step[] = [];
 	stepsSubject = new Subject<Step[]>();
 	emitSteps(): void {
 		this.stepsSubject.next(this.steps)

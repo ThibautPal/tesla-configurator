@@ -4,6 +4,6 @@ export class ModelsColors {
     constructor(
         public code: string,
         public description: string,
-        public colors: [Color]
+        public colors: Color[]
     ) { }
 }

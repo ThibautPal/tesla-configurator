@@ -24,6 +24,7 @@ export class Step3Component {
 		this.configurationSubscription = this.configurationService.configurationSubject.subscribe(
 			(configuration: Configuration) => {
 				this.configuration = configuration
+				console.log(this.configuration)
 			}
 		);
 		this.configurationService.emitConfiguration()

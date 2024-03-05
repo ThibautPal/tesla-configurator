@@ -6,8 +6,7 @@ import { Subject } from 'rxjs';
 	providedIn: 'root'
 })
 export class ConfigurationService {
-	private configuration: Configuration = {}
-
+	configuration: Configuration = {}
 	configurationSubject = new Subject<Configuration>();
 
 	emitConfiguration(): void {

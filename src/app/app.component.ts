@@ -13,5 +13,4 @@ import { StepperComponent } from './configurator/components/stepper/stepper.comp
 	styleUrl: './app.component.scss'
 })
 export class AppComponent {
-	title: string = "tesla-configurator"
 }
