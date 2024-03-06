@@ -1,14 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Step1Component } from './step1.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Configuration } from '../../models/configuration.model';
 import { ModelsColors } from '../../models/modelsColors.model';
 import { Color } from '../../models/color.model';
 import { Model } from '../../models/model.model';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('Step1Component', () => {
 	let component: Step1Component;
 	let fixture: ComponentFixture<Step1Component>;
+	let httpClient: HttpClient;
+	let httpTestingController: HttpTestingController;
+	let testUrl: string = "/models"
+
 	let testDataConfiguration: Configuration = {
 		model: {
 			"code": "X",
@@ -33,11 +38,12 @@ describe('Step1Component', () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [Step1Component, HttpClientModule]
-		})
-			.compileComponents();
+			imports: [Step1Component, HttpClientTestingModule]
+		}).compileComponents();
 
 		fixture = TestBed.createComponent(Step1Component);
+		httpClient = TestBed.inject(HttpClient);
+		httpTestingController = TestBed.inject(HttpTestingController);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 		component.modelsColors = testDateModelColors
@@ -87,5 +93,13 @@ describe('Step1Component', () => {
 		let color3: Color = { "code": "blue", "description": "Deep Blue Metallic", "price": 0 }
 		expect(component.compareObject(color1, color2)).toBe(true)
 		expect(component.compareObject(color1, color3)).toBe(false)
+	});
+
+	it('should check option value', () => {
+		const req = httpTestingController.expectOne(testUrl);
+		expect(req.request.method).toEqual('GET');
+		req.flush(testDateModelColors);
+		httpTestingController.verify();
+		expect(component.modelsColors).toEqual(testDateModelColors)
 	});
 });
