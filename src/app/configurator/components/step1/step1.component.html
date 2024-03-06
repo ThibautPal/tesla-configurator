@@ -3,7 +3,7 @@
 <div>
     <label for="modelSelect">Model:</label>
     <select name="modelSelect" id="modelSelect" [(ngModel)]="configuration.model" (ngModelChange)="resetModel()"
-        [compareWith]="compareModel">
+        [compareWith]="compareObject">
         <option [ngValue]="" disabled selected>Choose...</option>
         @for (model of modelsColors; track model.code) {
         <option [ngValue]="model">{{model.description}}</option>
@@ -12,7 +12,7 @@
 
     @if(configuration.model){
     <label for="colorSelect">Color:</label>
-    <select name="colorSelect" id="colorSelect" [(ngModel)]="configuration.color" [compareWith]="compareColor">
+    <select name="colorSelect" id="colorSelect" [(ngModel)]="configuration.color" [compareWith]="compareObject">
         @for (color of getColorsConfig(); track color.code) {
         <option [ngValue]="color">{{color.description}}</option>
         }

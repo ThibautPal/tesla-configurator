@@ -13,5 +13,4 @@ export class OptionsService {
 	getOption(modelCode: string | undefined): Observable<Option> {
 		return this.httpClient.get<Option>('/options/' + modelCode);
 	}
-
 }

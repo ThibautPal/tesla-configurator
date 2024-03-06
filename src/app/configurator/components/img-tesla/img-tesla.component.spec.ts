@@ -8,8 +8,7 @@ describe('ImgTeslaComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [ImgTeslaComponent]
-		})
-			.compileComponents();
+		}).compileComponents();
 
 		fixture = TestBed.createComponent(ImgTeslaComponent);
 		component = fixture.componentInstance;
@@ -19,4 +18,21 @@ describe('ImgTeslaComponent', () => {
 	it('should create', () => {
 		expect(component).toBeTruthy();
 	});
+
+	it('should get image Url', () => {
+		component.configuration = {
+			model: {
+				"code": "X",
+				"description": "Model X",
+			},
+			color: {
+				"code": "blue",
+				"description": "Deep Blue Metallic",
+				"price": 0
+			}
+		}
+		expect(component.getUrlImg()).toEqual(
+			"https://interstate21.com/tesla-app/images/X/blue.jpg"
+		);
+	})
 });

@@ -47,12 +47,11 @@ export class Step2Component {
 	}
 
 	public compareConfig(object1: Config, object2: Config): boolean {
-		return object1 && object2
-			? object1.id === object2.id
-			: object1 === object2
-	}
-
-	getUrlImg(): string {
-		return "https://interstate21.com/tesla-app/images/" + this.configuration?.model?.code + "/" + this.configuration?.color?.code + ".jpg"
+		if (object1.id === object2.id) {
+			return true;
+		}
+		else {
+			return false
+		}
 	}
 }

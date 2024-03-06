@@ -56,14 +56,12 @@ export class Step1Component implements OnInit, OnDestroy {
 		delete this.configuration.towHitch
 	}
 
-	public compareModel(object1: Model, object2: Model): boolean {
-		return object1 && object2
-			? object1.code === object2.code
-			: object1 === object2
-	}
-	public compareColor(object1: Color, object2: Color): boolean {
-		return object1 && object2
-			? object1.code === object2.code
-			: object1 === object2
+	public compareObject(object1: Model | Color, object2: Model | Color): boolean {
+		if (object1.code === object2.code) {
+			return true;
+		}
+		else {
+			return false
+		}
 	}
 }

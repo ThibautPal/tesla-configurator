@@ -1,8 +1,6 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { OptionsService } from './options.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-
-import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Option } from '../../models/option.model';
 
@@ -58,7 +56,7 @@ describe('OptionsService', () => {
 			.subscribe(result =>
 				expect(result).toEqual(testData)
 			);
-		const req = httpTestingController.expectOne('/options/C');
+		const req = httpTestingController.expectOne(testUrl);
 		expect(req.request.method).toEqual('GET');
 		req.flush(testData);
 		httpTestingController.verify();
