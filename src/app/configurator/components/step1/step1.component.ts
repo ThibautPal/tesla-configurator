@@ -57,7 +57,7 @@ export class Step1Component implements OnInit, OnDestroy {
 	}
 
 	public compareObject(object1: Model | Color, object2: Model | Color): boolean {
-		if (object1.code === object2.code) {
+		if (object1 && object2 && object1.code === object2.code) {
 			return true;
 		}
 		else {

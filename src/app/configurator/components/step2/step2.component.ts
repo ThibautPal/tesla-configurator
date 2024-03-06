@@ -47,7 +47,7 @@ export class Step2Component {
 	}
 
 	public compareConfig(object1: Config, object2: Config): boolean {
-		if (object1.id === object2.id) {
+		if (object1 && object2 && object1.id === object2.id) {
 			return true;
 		}
 		else {
