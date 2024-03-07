@@ -1,6 +1,6 @@
 <div id="stepper">
     @for ( step of steps; track steps) {
-    <button id="{{step.link}}" [disabled]="!isStepDisabled(step.link)"
-        (click)="navigateTo(step.link)">{{step.label}}</button>
+        <button id="{{step.link}}" [disabled]="!isStepDisabled(step.link)"
+            (click)="navigateTo(step.link)">{{step.label}}</button>
     }
 </div>

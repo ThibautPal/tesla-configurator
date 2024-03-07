@@ -4,25 +4,25 @@
 <select name="configSelect" id="configSelect" [(ngModel)]="configuration.config" [compareWith]="compareConfig">
     <option [ngValue]="" disabled selected>Choose...</option>
     @for (config of option.configs; track config.id) {
-    <option [ngValue]="config">{{config.description}}</option>
+        <option [ngValue]="config">{{config.description}}</option>
     }
 </select>
 
 @if (configuration.config) {
-<p class="line">Range: {{configuration.config.range}} miles - Max speed: {{configuration.config.speed}} - Cost:
-    {{configuration.config.price | currency:'USD' }}</p>
+    <p class="line">Range: {{configuration.config.range}} miles - Max speed: {{configuration.config.speed}} - Cost:
+        {{configuration.config.price | currency:'USD' }}</p>
 }
 
 @if (option.towHitch) {
-<div class="line">
-    <label for="includeTow">Tow hitch? </label>
-    <input type="checkbox" id="includeTow" name="includeTow" [(ngModel)]="configuration.towHitch" />
-</div>
+    <div class="line">
+        <label for="includeTow">Tow hitch? </label>
+        <input type="checkbox" id="includeTow" name="includeTow" [(ngModel)]="configuration.towHitch" />
+    </div>
 }
 
 @if (option.yoke) {
-<div class="line">
-    <label for="includeYoke">Yoke steering wheel? </label>
-    <input type="checkbox" id="includeYoke" name="includeYoke" [(ngModel)]="configuration.yoke" />
-</div>
+    <div class="line">
+        <label for="includeYoke">Yoke steering wheel? </label>
+        <input type="checkbox" id="includeYoke" name="includeYoke" [(ngModel)]="configuration.yoke" />
+    </div>
 }

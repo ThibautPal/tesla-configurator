@@ -6,16 +6,16 @@
         [compareWith]="compareObject">
         <option [ngValue]="" disabled selected>Choose...</option>
         @for (model of modelsColors; track model.code) {
-        <option [ngValue]="model">{{model.description}}</option>
+            <option [ngValue]="model">{{model.description}}</option>
         }
     </select>
 
     @if(configuration.model){
-    <label for="colorSelect">Color:</label>
-    <select name="colorSelect" id="colorSelect" [(ngModel)]="configuration.color" [compareWith]="compareObject">
-        @for (color of getColorsConfig(); track color.code) {
-        <option [ngValue]="color">{{color.description}}</option>
-        }
-    </select>
+        <label for="colorSelect">Color:</label>
+        <select name="colorSelect" id="colorSelect" [(ngModel)]="configuration.color" [compareWith]="compareObject">
+            @for (color of getColorsConfig(); track color.code) {
+                <option [ngValue]="color">{{color.description}}</option>
+            }
+        </select>
     }
 </div>
